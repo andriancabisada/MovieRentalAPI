@@ -1,14 +1,20 @@
 ﻿using MovieRentalAPI.Models;
 using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+using DbContext = Microsoft.EntityFrameworkCore.DbContext;
 
 public class VideoShopContext : DbContext
 {
-    public DbSet<Movie> Movies { get; set; }
-    public DbSet<Customer> Customers { get; set; }
-    public DbSet<Rental> Rentals { get; set; }
-    public DbSet<RentalDetail> RentalDetails { get; set; }
+    public Microsoft.EntityFrameworkCore.DbSet<Movie> Movies { get; set; }
+    public Microsoft.EntityFrameworkCore.DbSet<Customer> Customers { get; set; }
+    public Microsoft.EntityFrameworkCore.DbSet<Rental> Rentals { get; set; }
+    public Microsoft.EntityFrameworkCore.DbSet<RentalDetail> RentalDetails { get; set; }
 
-    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    public VideoShopContext(DbContextOptions<VideoShopContext> options) : base(options)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // Configure Movie entity
         modelBuilder.Entity<Movie>()
@@ -41,23 +47,16 @@ public class VideoShopContext : DbContext
         modelBuilder.Entity<Rental>()
             .HasKey(r => r.Id);
 
-        modelBuilder.Entity<Rental>()
-            .HasRequired(r => r.Customer)
-            .WithMany()
-            .HasForeignKey(r => r.CustomerId)
-            .WillCascadeOnDelete(false);
+  
 
 
         // Configure RentalDetail entity
         modelBuilder.Entity<RentalDetail>()
             .HasKey(rd => rd.Id);
 
-        modelBuilder.Entity<RentalDetail>()
-            .HasRequired(rd => rd.Movie)
-            .WithMany()
-            .HasForeignKey(rd => rd.MovieId)
-            .WillCascadeOnDelete(false);
+        
 
         base.OnModelCreating(modelBuilder);
+
     }
 }

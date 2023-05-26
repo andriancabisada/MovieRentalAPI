@@ -1,0 +1,7 @@
+E:\repos\MovieRentalAPI\MovieRentalAPI\obj\Debug\net6.0\MovieRentalAPI.csproj.AssemblyReference.cache
+E:\repos\MovieRentalAPI\MovieRentalAPI\obj\Debug\net6.0\MovieRentalAPI.GeneratedMSBuildEditorConfig.editorconfig
+E:\repos\MovieRentalAPI\MovieRentalAPI\obj\Debug\net6.0\MovieRentalAPI.AssemblyInfoInputs.cache
+E:\repos\MovieRentalAPI\MovieRentalAPI\obj\Debug\net6.0\MovieRentalAPI.AssemblyInfo.cs
+E:\repos\MovieRentalAPI\MovieRentalAPI\obj\Debug\net6.0\MovieRentalAPI.csproj.CoreCompileInputs.cache
+E:\repos\MovieRentalAPI\MovieRentalAPI\obj\Debug\net6.0\MovieRentalAPI.MvcApplicationPartsAssemblyInfo.cs
+E:\repos\MovieRentalAPI\MovieRentalAPI\obj\Debug\net6.0\MovieRentalAPI.MvcApplicationPartsAssemblyInfo.cache

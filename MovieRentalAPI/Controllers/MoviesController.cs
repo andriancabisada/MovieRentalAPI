@@ -14,8 +14,10 @@ namespace MovieRentalAPI.Controllers
 
         public MoviesController()
         {
-            _unitOfWork = new UnitOfWork(new VideoShopContext());
-            _movieRepository = new Repository<Movie>(_unitOfWork.Context);
+            var context = new VideoShopContext();
+            _unitOfWork = new UnitOfWork(context);
+            _movieRepository = new Repository<Movie>(context);
+
         }
 
         // GET: api/movies

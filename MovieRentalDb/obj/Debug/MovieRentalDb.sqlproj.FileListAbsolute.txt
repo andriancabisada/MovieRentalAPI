@@ -1,0 +1,6 @@
+E:\repos\MovieRentalAPI\MovieRentalDb\bin\Debug\MovieRentalDb.dacpac
+E:\repos\MovieRentalAPI\MovieRentalDb\bin\Debug\MovieRentalDb.dll
+E:\repos\MovieRentalAPI\MovieRentalDb\bin\Debug\MovieRentalDb.pdb
+E:\repos\MovieRentalAPI\MovieRentalDb\obj\Debug\MovieRentalDb.sqlproj.AssemblyReference.cache
+E:\repos\MovieRentalAPI\MovieRentalDb\obj\Debug\MovieRentalDb.dll
+E:\repos\MovieRentalAPI\MovieRentalDb\obj\Debug\MovieRentalDb.pdb

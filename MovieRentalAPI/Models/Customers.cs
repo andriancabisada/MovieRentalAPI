@@ -1,6 +1,6 @@
 ﻿namespace MovieRentalAPI.Models
 {
-    public class Customer
+    public class Customers
     {
         public int Id { get; set; }
         public string? Name { get; set; }

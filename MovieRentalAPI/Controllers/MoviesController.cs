@@ -1,97 +1,76 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MovieRentalAPI.Models;
-using MovieRentalAPI.Repository;
-using System.Net;
-using System.Web.Http;
-using RouteAttribute = System.Web.Http.RouteAttribute;
+using MovieRentalAPI.Interface;
 
 namespace MovieRentalAPI.Controllers
 {
-    public class MoviesController : ApiController
+
+    [ApiController]
+    [Route("[controller]")]
+    public class MoviesController : ControllerBase
     {
-        private readonly IRepository<Movie> _movieRepository;
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IMovies _IMovies;
+       
 
-        public MoviesController()
+        public MoviesController(IMovies iMovies)
         {
-            var context = new VideoShopContext();
-            _unitOfWork = new UnitOfWork(context);
-            _movieRepository = new Repository<Movie>(context);
+
+           _IMovies = iMovies;
 
         }
 
-        // GET: api/movies
-        public IHttpActionResult GetMovies()
+       
+
+        [HttpGet(Name = "GetMovies")]
+        public async Task<List<Movies>> GetMovies()
         {
-            var movies = _movieRepository.GetAll();
-            return Ok(movies);
+            return await Task.FromResult(_IMovies.GetAll());
+
         }
 
-        // GET: api/movies/{id}
-        [Route("{id}")]
-        public IHttpActionResult GetMovie(int id)
+        
+        [HttpGet("{id}", Name = "GetMovieById")]
+        public IActionResult GetMovieById(int id)
         {
-            var movie = _movieRepository.GetById(id);
-            if (movie == null)
-                return NotFound();
 
-            return Ok(movie);
-        }
-
-        // POST: api/movies
-        public IHttpActionResult PostMovie(Movie movie)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            _movieRepository.Add(movie);
-            _unitOfWork.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = movie.Id }, movie);
-        }
-
-        // PUT: api/movies/{id}
-        [Route("{id}")]
-        public IHttpActionResult PutMovie(int id, Movie movie)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var existingMovie = _movieRepository.GetById(id);
-            if (existingMovie == null)
-                return NotFound();
-
-            existingMovie.Title = movie.Title;
-            existingMovie.Genre = movie.Genre;
-
-            _movieRepository.Update(existingMovie);
-            _unitOfWork.SaveChanges();
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // DELETE: api/movies/{id}
-        [Route("{id}")]
-        public IHttpActionResult DeleteMovie(int id)
-        {
-            var movie = _movieRepository.GetById(id);
-            if (movie == null)
-                return NotFound();
-
-            _movieRepository.Delete(movie);
-            _unitOfWork.SaveChanges();
-
-            return Ok(movie);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            Movies movie =  _IMovies.GetMovieData(id);
+            if(movie != null)
             {
-                _unitOfWork.Dispose();
+                return Ok(movie);
             }
-            base.Dispose(disposing);
+            return NotFound();
         }
+
+        
+        [HttpPut(Name = "UpdateMovie")]
+        public IActionResult UpdateMovie(Movies movie)
+        {
+            
+
+            _IMovies.Update(movie);
+            return Ok(movie);
+        }
+
+        
+        [HttpPost(Name = "SaveMovie")]
+        public IActionResult SaveMovie(Movies movie)
+        {
+            _IMovies.Add(movie);
+            return Ok(movie);
+        }
+
+        
+        [HttpDelete("{id}",Name = "DeleteMovie")]
+        public IActionResult DeleteMovie(int id)
+        {
+            Movies found = _IMovies.GetMovieData(id);
+            if (found == null) return NotFound();
+
+            _IMovies.Delete(id);
+            return Ok();
+        }
+
     }
 
 }

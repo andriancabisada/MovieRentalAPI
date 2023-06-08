@@ -4,10 +4,10 @@ using MovieRentalAPI.Models;
 
 namespace MovieRentalAPI.Services
 {
-    public class CustomerManager : ICustomer
+    public class CustomerService : ICustomer
     {
         readonly VideoShopContext _dbContext = new();
-        public CustomerManager(VideoShopContext dbContext)
+        public CustomerService(VideoShopContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -38,6 +38,8 @@ namespace MovieRentalAPI.Services
                 throw;
             }
         }
+
+        
         public Customers Add(Customers customer)
         {
             try

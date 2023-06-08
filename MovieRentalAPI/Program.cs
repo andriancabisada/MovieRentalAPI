@@ -15,8 +15,12 @@ builder.Services.AddDbContext<VideoShopContext>
     options.UseSqlServer(builder.Configuration["GetConnectionString:DefaultConnection"]));
 
 builder.Services.AddControllers();
-builder.Services.AddTransient<IMovies, MoviesManger>();
-builder.Services.AddTransient<ICustomer, CustomerManager>();
+
+builder.Services.AddTransient<IMovies, MoviesService>();
+builder.Services.AddTransient<ICustomer, CustomerService>();
+builder.Services.AddTransient<IRentals, RentalsService>();
+builder.Services.AddTransient<IRentalDetails, RentalDetailsService>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

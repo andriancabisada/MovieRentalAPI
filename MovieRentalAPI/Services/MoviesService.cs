@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MovieRentalAPI.Services
 {
-    public class MoviesManger : IMovies
+    public class MoviesService : IMovies
     {
         readonly VideoShopContext _dbContext = new();
 
-        public MoviesManger(VideoShopContext dbContext)
+        public MoviesService(VideoShopContext dbContext)
         {
             _dbContext = dbContext;
         }

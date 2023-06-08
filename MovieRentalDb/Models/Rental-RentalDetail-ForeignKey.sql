@@ -1,2 +1,2 @@
-﻿ALTER TABLE RentalDetail
-ADD CONSTRAINT FK_RentalDetail_RentalId FOREIGN KEY (RentalId) REFERENCES Rental(Id);
+﻿ALTER TABLE RentalDetails
+ADD CONSTRAINT FK_RentalDetails_RentalId FOREIGN KEY (RentalId) REFERENCES Rental(Id);

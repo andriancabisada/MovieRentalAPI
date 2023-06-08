@@ -6,11 +6,11 @@ namespace MovieRentalAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CustomerController : ControllerBase
+    public class CustomersController : ControllerBase
     {
         private readonly ICustomer _ICustomer;
 
-        public CustomerController(ICustomer iCustomer)
+        public CustomersController(ICustomer iCustomer)
         {
 
             _ICustomer = iCustomer;
@@ -24,7 +24,7 @@ namespace MovieRentalAPI.Controllers
 
         }
 
-        [HttpGet("{id}",Name ="GetCustomer")]
+        [HttpGet("{id}",Name = "GetCustomer")]
         public IActionResult GetCustomerById(int id)
         {
 
@@ -53,7 +53,7 @@ namespace MovieRentalAPI.Controllers
 
 
         [HttpDelete("{id}", Name = "DeleteCustomer")]
-        public IActionResult DeleteMovie(int id)
+        public IActionResult DeleteCustomer(int id)
         {
             Customers found = _ICustomer.GetCustomerData(id);
             if (found == null) return NotFound();

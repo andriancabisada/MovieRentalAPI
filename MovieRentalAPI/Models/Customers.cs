@@ -6,6 +6,8 @@
         public string? Name { get; set; }
         public string? Email { get; set; }
         // Additional customer properties
+
+        public List<Rentals>? Rentals { get; set; }
     }
 
 }

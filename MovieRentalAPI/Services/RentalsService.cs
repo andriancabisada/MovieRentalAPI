@@ -57,7 +57,7 @@ namespace MovieRentalAPI.Services
                 throw;
             }
         }
-        public List<Rentals> GetRentals()
+        public List<Rentals> GetAllRentals()
         {
             try
             {

@@ -1,0 +1,2 @@
+﻿ALTER TABLE Customer
+ADD CONSTRAINT FK_Customer_RentalId FOREIGN KEY (RentalId) REFERENCES Rental(Id);

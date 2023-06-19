@@ -10,6 +10,8 @@ namespace MovieRentalAPI.Interface
         public Movies Add(Movies movie);
         public Movies Update(Movies movie);
         public void Delete(int id);
+
+        public List<Movies> GetMovieByName(string name);
     }
 
 }

@@ -60,9 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Models\Rental.sql" />
-    <Build Include="Models\RentalDetail.sql" />
-    <Build Include="Models\Rental-RentalDetail-ForeignKey.sql" />
     <Build Include="Models\Movie.sql" />
     <Build Include="Models\Customer.sql" />
+    <Build Include="Models\RentalDetails.sql" />
+    <Build Include="Models\Rental-RentalDetail-ForeignKey.sql" />
+    <Build Include="Models\Customer-Rental-FK.sql" />
   </ItemGroup>
 </Project>

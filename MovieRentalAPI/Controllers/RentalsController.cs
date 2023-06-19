@@ -18,9 +18,9 @@ namespace MovieRentalAPI.Controllers
         }
 
         [HttpGet(Name = "GetRentals")]
-        public async Task<List<Rentals>> GetRentals()
+        public async Task<List<Rentals>> GetAllRentals()
         {
-            return await Task.FromResult(_IRentals.GetRentals());
+            return await Task.FromResult(_IRentals.GetAllRentals());
 
         }
 

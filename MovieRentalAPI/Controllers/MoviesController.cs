@@ -42,7 +42,14 @@ namespace MovieRentalAPI.Controllers
             return NotFound();
         }
 
-        
+        [HttpGet("{name}", Name = "GetMovieByName")]
+        public async Task<List<Movies>> GetMovieByName(string name)
+        {
+            return await Task.FromResult(_IMovies.GetMovieByName(name));
+
+        }
+
+
         [HttpPut(Name = "UpdateMovie")]
         public IActionResult UpdateMovie(Movies movie)
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MovieRentalAPI.Interface;
 using MovieRentalAPI.Models;
 
@@ -17,9 +18,10 @@ namespace MovieRentalAPI.Services
             try
             {
                 Customers? customer = _dbContext.Customers.Find(id);
-                if (customer == null) throw new ArgumentNullException();
+                if (customer != null) return customer;
 
-                return customer;
+
+                throw new ArgumentNullException();
             }
             catch
             {

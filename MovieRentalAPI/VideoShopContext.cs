@@ -46,7 +46,7 @@ namespace MovieRentalAPI
             modelBuilder.Entity<Rentals>(entity =>
             {
                 entity.ToTable("Rental");
-                entity.HasKey(r => r.Id);
+                entity.Property(r => r.Id).HasColumnName("Id");
                 entity.Property(r => r.RentalDate).IsRequired();
                 entity.Property(r => r.DueDate).IsRequired();
                 entity.HasOne(r => r.Customer)
@@ -59,7 +59,7 @@ namespace MovieRentalAPI
             modelBuilder.Entity<RentalDetails>(entity =>
             {
                 entity.ToTable("RentalDetails");
-                entity.HasKey(rd => rd.Id);
+                entity.Property(rd => rd.Id).HasColumnName("Id");
                 entity.Property(rd => rd.Quantity).IsRequired();
                 entity.HasOne(rd => rd.Rental)
                     .WithMany()
@@ -71,6 +71,7 @@ namespace MovieRentalAPI
                     .HasForeignKey(rd => rd.MovieId)
                     .IsRequired()
                     .OnDelete(DeleteBehavior.Restrict);
+               
             });
             OnModelCreatingPartial(modelBuilder);
 

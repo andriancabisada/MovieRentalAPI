@@ -9,7 +9,7 @@ namespace MovieRentalAPI.Interface
         public Rentals Update(Rentals rental);
         public void Delete(int id);
 
-        public List<Rentals> GetRentals();
+        public List<Rentals> GetAllRentals();
 
         public Rentals GetRentalsById(int id);
     }

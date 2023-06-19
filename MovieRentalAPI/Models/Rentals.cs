@@ -15,12 +15,15 @@
     {
         public int Id { get; set; }
 
-        public Rentals Rental { get; set; }
+        public int Quantity { get; set; }
+
+        public Movies? Movie { get; set; }
+
+        public int MovieId { get; set; }
+        public Rentals? Rental { get; set; }
 
         public int RentalId { get; set; }
-        public int MovieId { get; set; }
-        public Movies Movie { get; set; }
-        public int Quantity { get; set; }
+        
         // Additional rental detail properties
     }
 

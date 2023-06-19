@@ -1,8 +1,7 @@
 ﻿using MovieRentalAPI.Models;
 using MovieRentalAPI.Interface;
 using Microsoft.EntityFrameworkCore;
-using System.Web.Http.Results;
-using Microsoft.AspNetCore.Mvc;
+
 
 namespace MovieRentalAPI.Services
 {
@@ -13,6 +12,19 @@ namespace MovieRentalAPI.Services
         public MoviesService(VideoShopContext dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        public List<Movies> GetMovieByName(string name)
+        {
+            try
+            {
+               return _dbContext.Movies.Where(a => a.Title.Contains(name)).ToList();
+            }
+            catch
+            {
+
+                throw;
+            }
         }
         //To Get all user details
         public List<Movies> GetAll()
